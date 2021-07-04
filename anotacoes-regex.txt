@@ -1,2 +1,68 @@
 Link do GitHub que mostrava no curso:
 https://github.com/andrechavesg/Express-es-regulares-Capturando-textos-de-forma-m-gica/
+
+REGEX
+
+#### Usar grep com Regex:
+
+ls | grep -p ".*txt"
+
+Tentei rodar o comando acima no Git Bash, mas não funcionou. grep --help apresenta algumas opções como:
+-P, --perl-regexp         PATTERN is a Perl regular expression
+-e, --regexp=PATTERN      use PATTERN for matching
+
+Consegui adaptar o comando das 2 formas abaixo:
+ls | grep -P ".*txt"
+ls | grep -e ".*txt"
+
+Encontra por exemplo:
+anotacoes-regex.txt
+respostas-capitulo4.txt
+
+#### Usar regex no editro de texto
+<div .*>
+
+Encontra por exemplo:
+<div class="form-group">
+
+#### Regex no XSD
+
+<xs:pattern value="([a-z])*"/>
+
+#### Selecionar pela extensão
+Target: imagem.png
+Pattern: .*png
+
+#### Achar CPF
+Target:
+João Fulano,123.456.789-00,21 de Maio de 1993,(21) 3079-9987,Rua do Ouvidor,50,20040-030,Rio de Janeiro
+
+Pattern:
+\d\d\d\.\d\d\d\.\d\d\d\-\d\d
+ou
+\d{3}\.\d{3}\.\d{3}\-\d{2}
+
+#### Achar CNPJ
+
+Target: 15.123.321/8883-22
+Pattern: \d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}
+
+##### Achar ip
+Target:
+126.1.112.34
+128.126.12.244
+192.168.0.34
+
+Pattern: \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}
+
+#### Achar CEP
+Target: João Fulano,123.456.789-00,21 de Maio de 1993,(21) 3079-9987,Rua do Ouvidor,50,20040-030,Rio de Janeiro
+Pattern: \d{5}-\d{3}
+
+#### Achar Telefone
+Target: (21) 3216-2345
+Pattern: \(\d{2}\) \d{4}-\d{4}
+
+#### outros Target
+Maria Fulana, 98765432100,11 de Abril de 1995,(11) 933339871,Rua Vergueiro,3185,04101-300,São Paulo
+denise teste, 987.654.321.00,28 de Dezembro de 1991,(31)45562712,SCS Qd. 8 Bl. B-50,11,70333-900,Rio Grande
