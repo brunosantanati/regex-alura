@@ -121,5 +121,18 @@ Target: ?classes+poderosas*
 Pattern: [a-z?*+]+
 
 #### OBSERVAÇÕES
+
+Classes
+[A-Z] - letras de A até Z
+[123] - 1, 2 ou 3
+\d - todos os dígitos [0-9]
 \w significa word char e é uma atalho para [A-Za-z0-9_]
 \s significa whitespace e é um atalho para [ \t\r\n\f]
+
+Quantifiers
+{n} - exatamente n vezes
+{n,} - no mínimo n vezes
+{n,m} - no mínimo n, no máximo m vezes
+? - zero ou uma vez
++ - uma ou mais vezes
+* - zero ou mais vezes
