@@ -120,7 +120,58 @@ Pattern: [A-Z]*ROT[A-Z]+
 Target: ?classes+poderosas*
 Pattern: [a-z?*+]+
 
+####### CAPÍTULO 3 #######
+
+#### Achar a palavra "de"
+Target: de denise teste, 987.654.321-00,28 de Dezembro de 1991,(31)45562712,SCS Qd. 8 Bl. B-50,11,70333-900,Rio Grande de
+Pattern: \bde\b
+
+#### Achar aaa
+Target: aaa aaaa aaa aaaa aaa
+Pattern:
+\baaa\b
+ou
+\ba{3}\b
+
+#### Achar caminho arquivo(começa com file e termina com html)
+Target: file:///Users/nico/Downloads/regex/index.html
+Pattern: ^file.+html$
+
+#### Achar CPF
+Target: 111.111.111-11
+Pattern: ^\d{3}\.\d{3}\.\d{3}-\d{2}$
+
+#### Achar erros no log(começam com Caused by)
+Target: Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+Pattern: ^Caused by:.*
+
+#### Achar data
+Target:
+Data: 02/09/1964
+ou
+Data:02/09/1964
+
+Pattern: ^Data:[\s]?[0-9]{2}\/[0-9]{2}\/[0-9]{4}$
+
+#### Achar que termine com .html
+Target:
+exercicio.html
+https://cursos.alura.com.br/curso.html
+Leonardo criou a página meu-site.html
+
+Pattern: .*\.html$
+
+#### Achar a sílaba "por" dentro de uma palavra
+Target: português proporcional compor
+Pattern: \Bpor\B
+
 #### OBSERVAÇÕES
+
+Âncoras
+\b - Word boundary. Antes e depois da sequência de caracteres, não pode ter word char [A-Za-z0-9_].
+\B - non-word-boundary. Antes e depois da sequência de caracteres, deve ter um word char
+^ é uma âncora que seleciona o início da string alvo.
+$ é uma âncora que seleciona o fim do alvo.
 
 Classes
 [A-Z] - letras de A até Z
