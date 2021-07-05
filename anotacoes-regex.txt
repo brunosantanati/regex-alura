@@ -165,6 +165,23 @@ Pattern: .*\.html$
 Target: português proporcional compor
 Pattern: \Bpor\B
 
+####### CAPÍTULO 4 #######
+
+#### Regex para data com grupo para o ano
+Obs: Agora imagine que queremos sim fazer um match da data, mas selecionar apenas o ano. Para tal existem os grupos. Um grupo é definido através de parênteses (). Ou seja, basta colocar a parte da regex que define o ano em parênteses
+Target: João Fulano,123.456.789-00,21 de Maio de 1993,(21) 3079-9987,Rua do Ouvidor,50,20040-030,Rio de Janeiro
+Pattern: [0123]?\d\s+de\s+[A-Z][a-zç]{1,8}\s+de\s+([12]\d{3})
+
+#### Regex para data com grupos para dia, 'de', mês, 'de' e ano (sendo que os grupos para 'de' são opcionais)
+Obs: Através de um grupo, podemos também definir um conjunto de caracteres como opcional. Já conhecemos o quantifier que significa opcional, o ? (zero ou uma vez). Agora só falta combinar o ? com um grupo. Por exemplo, podemos deixar a preposição de como opcional: (de\s+)?
+Target: João Fulano,123.456.789-00,21 de Maio de 1993,(21) 3079-9987,Rua do Ouvidor,50,20040-030,Rio de Janeiro
+Pattern: ([0123]?\d)\s+(de\s+)?([A-Z][a-zç]{1,8})\s+(de\s+)?([12]\d{3})
+
+#### Regex para data com grupos para dia, mês e ano (usando 'non-capturing groups' para não mostrar grupos das preposições 'de')
+Obs: Agora, a pergunta é: como podemos usar um grupo que não é devolvido pela regex? Para tal existem os non-capturing groups! Novamente usaremos o simbolo ?, mas agora no início do grupo junto com os dois pontos, por exemplo para a preposição de: (?:de\s+)?
+Target: João Fulano,123.456.789-00,21 de Maio de 1993,(21) 3079-9987,Rua do Ouvidor,50,20040-030,Rio de Janeiro
+Pattern: ([0123]?\d)\s+(?:de\s+)?([A-Z][a-zç]{1,8})\s+(?:de\s+)?([12]\d{3})
+
 #### OBSERVAÇÕES
 
 Âncoras
