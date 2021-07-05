@@ -182,6 +182,55 @@ Obs: Agora, a pergunta é: como podemos usar um grupo que não é devolvido pela
 Target: João Fulano,123.456.789-00,21 de Maio de 1993,(21) 3079-9987,Rua do Ouvidor,50,20040-030,Rio de Janeiro
 Pattern: ([0123]?\d)\s+(?:de\s+)?([A-Z][a-zç]{1,8})\s+(?:de\s+)?([12]\d{3})
 
+#### Capturar dígito verificador do CPF (através de um grupo)
+Target: 111.222.333-96
+Pattern: \d{3}[-.]?\d{3}[.-]?\d{3}[.-]?(\d{2})
+
+#### Decifrar a mensagem (criar um grupo para as letras escondidas)
+Obs: Um agente secreto conseguiu capturar uma mensagem criptografada. Depois de algum tempo, ele descobriu a seguinte lei de formação: cada letra da palavra recebe o prefixo Z, mas não apenas isso. A letra Z é seguida de um número com um ou mais dígitos. Com base nessa informação ultra secreta, crie uma expressão regular que consiga evidenciar a palavra secreta. ATENÇÃO: para resolver este problema você precisará trabalhar com grupos, não deixe de marcar a opção "Mostrar grupos" do nosso testador de expressão regulares.
+Target: Z171PZ7AZ23PZ7819AZ78GZ1AZ99IZ34O
+Pattern: Z\d+(\w)
+
+#### Encontrar causa e descrição da exception
+Target: Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+Pattern: (Caused[\s\w:.]+):([\w\s]+)
+My Answer: (Caused by:.+):(.+)
+
+#### Extrair o nome do usuário do e-mail
+Obs: O email deve ter um @ e terminar com caelum.com.br ou alura.com.br. O nome do usuário (tudo antes do @) tem apenas letras minúsculas, pode ter um número no final e tem de 5 a 15 caracteres.
+Target:
+super.mario@caelum.com.br
+donkey.kong@alura.com.br
+bowser1@alura.com.br
+
+Pattern: ([a-z.]{4,14}[a-z\d])@(?:caelum.com.br|alura.com.br)
+
+#### Validar e-mail
+Target:
+
+válidos
+donkey.kong@kart.com.br
+bowser1@games.info 
+super-mario@nintendo.JP
+TEAM.donkey-kong@MARIO.kart1.nintendo.com
+
+inválidos
+toad@kart...com
+wario@kart@nintendo.com
+yoshi@nintendo
+daisy@nintendo.b
+..@email.com
+
+Pattern: ^([\w-]\.?)+@([\w-]+\.)+([A-Za-z]{2,4})+$
+
+#### Extrair Nome, Rua, Número e CEP
+Target:
+Nico Steppat|14/05/1977|Rua Buarque de Macedo|50|22222-222|Rio de Janeiro
+Romulo Henrique|14/06/1993|Rua do Lins|120|12345-322|Rio de Janeiro
+Leonardo Cordeiro|01/01/1995|Rua de Campo Grande|01|00001-234|Rio de Janeiro
+
+Pattern: ^([\w\s]+)\|(?:\d\d\/\d\d\/\d\d\d\d)\|([\w\s]+)\|(\d{1,4})\|(\d{5}-\d{3})\|(?:[\w\s]{10,})$
+
 #### OBSERVAÇÕES
 
 Âncoras
