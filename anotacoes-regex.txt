@@ -231,6 +231,52 @@ Leonardo Cordeiro|01/01/1995|Rua de Campo Grande|01|00001-234|Rio de Janeiro
 
 Pattern: ^([\w\s]+)\|(?:\d\d\/\d\d\/\d\d\d\d)\|([\w\s]+)\|(\d{1,4})\|(\d{5}-\d{3})\|(?:[\w\s]{10,})$
 
+####### CAPÍTULO 5 #######
+
+#### Achar tag h1 (tornando o meta-char + preguiçoso)
+Target: <h1 class="text-left">Expressões regulares</h1>
+Pattern:
+<h1.+>
+Nossa regex acima é gananciosa por padrão e selecionou todos os caracteres até o último >.
+O meta-char, que na verdade é ganancioso, é o +, igualmente * e {} são também assim, e sempre selecionam o máximo de caracteres possíveis, 
+se não for configurado diferente. Ou seja, podemos dizer que não queremos "ganância" e sim preguiçoso ou hesitante. Isso se faz, novamente pelo caractere ?:
+<h1.+?>
+A regex acima pega apenas o h1 de abertura. A regex completa:
+<h1.+?>([\w\sõãí.]+)</h1>
+
+#### Testando modo preguiçoso
+Target: alura
+Pattern:
+[a-z]+
+[a-z]+?
+[a-z]{1,5}
+[a-z]{1,5}?
+
+#### Match em abertura e fechamento de tags de título (h)
+Target: <h1 class="text-left">Expressões regulares</h1>
+Pattern:
+<(h1|h2).+?>([\w\sõãí.]+)</(h1|h2)>
+O problema da regex acima é que ela da match em algo errado como: <h1 class="text-left">Expressões regulares</h2>.
+Para resolver isso podemos usar backreference (\1 significa uma referência ao primeiro grupo):
+<(h1|h2).+?>([\w\sõãí.]+)</\1>
+
+#### Garantir mesma tag de abertura e fechamento
+Target:
+<p1> ... </p1>
+<p2>Teste 2</p2>
+<p9>Testeeee</p9>
+
+Pattern:
+<(p[1-9])>.*<\/\1>
+
+#### Match apenas na tag de abertura usando negação (^)
+Target: <h1 class="text-left">Expressões regulares</h1>
+Pattern: <h1[^>]+>
+
+#### Achar a mensagem escondida usando negação (^)
+Target: Z171PZ7AZ23PZ7819AZ78GZ1AZ99IZ34O
+Pattern: [^Z\d]
+
 #### OBSERVAÇÕES
 
 Âncoras
@@ -245,6 +291,8 @@ Classes
 \d - todos os dígitos [0-9]
 \w significa word char e é uma atalho para [A-Za-z0-9_]
 \s significa whitespace e é um atalho para [ \t\r\n\f]
+\W é a non-word char, ou seja tudo que não é um word char. \W é um atalho para [^\w]
+A classe \D, por sua vez, é um non-digit, ou seja, \D é um atalho para [^\d]
 
 Quantifiers
 {n} - exatamente n vezes
