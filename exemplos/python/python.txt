@@ -1,0 +1,33 @@
+Microsoft Windows [versão 10.0.19042.1083]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Users\myuser>cd C:\Users\myuser\Documents\apps\python-3.9.5-embed-amd64
+
+C:\Users\myuser\Documents\apps\python-3.9.5-embed-amd64>python
+Python 3.9.5 (tags/v3.9.5:0a7dcbd, May  3 2021, 17:27:52) [MSC v.1928 64 bit (AMD64)] on win32
+>>> regexp = r'(\d\d)(\w)'
+>>> alvo = '11a22b33c'
+>>> import re
+>>> resultado = re.search(regexp, alvo)
+>>> resultado.group()
+'11a'
+>>> resultado.group(0)
+'11a'
+>>> resultado.group(1)
+'11'
+>>> resultado.group(2)
+'a'
+>>> resultado.start()
+0
+>>> resultado.end()
+3
+>>> resultados = re.finditer(regexp, alvo)
+>>> for resultado in resultados:
+...     print("%s | %s | %s [%s,%s]" % (resultado.group(), resultado.group(1), resultado.group(2), resultado.start(), resultado.end()))
+...
+11a | 11 | a [0,3]
+22b | 22 | b [3,6]
+33c | 33 | c [6,9]
+>>>
+>>> import sys
+>>> sys.exit()
