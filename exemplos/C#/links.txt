@@ -1,0 +1,2 @@
+Instalador Visual Studio:
+https://visualstudio.microsoft.com/pt-br/downloads/
