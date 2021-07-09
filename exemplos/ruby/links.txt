@@ -1,0 +1,2 @@
+Instalador do Ruby para Windows:
+https://rubyinstaller.org/
