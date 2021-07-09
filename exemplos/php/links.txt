@@ -1,0 +1,10 @@
+Instalação do PHP no Windows:
+https://www.php.net/manual/pt_BR/install.windows.php
+https://www.php.net/manual/pt_BR/install.windows.manual.php
+
+Download PHP:
+http://windows.php.net/downloads/
+https://github.com/Microsoft/php-sdk-binary-tools
+
+Command Line PHP on Microsoft Windows
+https://www.php.net/manual/pt_BR/install.windows.commandline.php
