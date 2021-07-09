@@ -1,0 +1,13 @@
+<html>
+
+<script>
+	var arquivo = '100,200-150,200;20'; //muitos separadores: - , e ;
+	var valores = arquivo.split(','); //separar só por vírgula não vai funcionar
+	console.log(valores);
+	
+	var exp = /[,;-]/;
+	valores = arquivo.split(exp); //resolver passando regex para o split
+	console.log(valores);
+</script>
+
+</html>
