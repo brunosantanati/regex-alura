@@ -55,6 +55,8 @@ namespace regex
 
             alterarFormatoData();
 
+            trocarSeparador();
+
             Console.ReadKey();
 
         }
@@ -77,6 +79,27 @@ namespace regex
                 string separador2 = resultado.Groups[4].Value;
 
                 Console.WriteLine(string.Format("{0}/{1}/{2}", dia, mes, ano));
+            }
+        }
+
+        private static void trocarSeparador()
+        {
+            string alvo = "2010-10-10";
+            Regex regexp = new Regex(@"(\d{4})(-)(\d{2})(-)(\d{2})");
+
+            MatchCollection resultados = regexp.Matches(alvo);
+            foreach (Match resultado in resultados)
+            {
+
+                string ano = resultado.Groups[1].Value;
+                string mes = resultado.Groups[3].Value;
+                string dia = resultado.Groups[5].Value;
+
+                string separador1 = resultado.Groups[2].Value;
+                string separador2 = resultado.Groups[4].Value;
+
+                string novaData = string.Format("{0}{1}{2}{3}{4}", dia, separador1, mes, separador2, ano).Replace("-", "/");
+                Console.WriteLine(novaData);
             }
         }
     }
