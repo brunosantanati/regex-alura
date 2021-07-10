@@ -8,3 +8,6 @@ https://github.com/Microsoft/php-sdk-binary-tools
 
 Command Line PHP on Microsoft Windows
 https://www.php.net/manual/pt_BR/install.windows.commandline.php
+
+Executar códigos PHP online
+https://sandbox.onlinephpfunctions.com/
