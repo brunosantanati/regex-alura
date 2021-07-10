@@ -277,7 +277,17 @@ Pattern: <h1[^>]+>
 Target: Z171PZ7AZ23PZ7819AZ78GZ1AZ99IZ34O
 Pattern: [^Z\d]
 
+####### OUTROS EXEMPLOS #######
+
+#### Achar tag a
+Target: <a href="www.alura.com.br"> Cursos online </a>
+Pattern: <(a)\s+href="(.+)"(?:>(.*)<\/\1>)
+
 #### OBSERVAÇÕES
+
+Sites de regex na internet:
+http://regexr.com/
+https://regex101.com/
 
 Âncoras
 \b - Word boundary. Antes e depois da sequência de caracteres, não pode ter word char [A-Za-z0-9_].
