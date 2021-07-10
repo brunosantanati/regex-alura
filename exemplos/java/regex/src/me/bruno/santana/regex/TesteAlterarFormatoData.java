@@ -19,7 +19,9 @@ public class TesteAlterarFormatoData {
             String separador1 = matcher.group(2);
             String separador2 = matcher.group(4);
 
-            System.out.println(dia + separador1 + mes + separador2 + ano);
+            String novaData = dia + separador1 + mes + separador2 + ano;
+            novaData = novaData.replaceAll("-", "/"); // A classe String nos oferece um método chamado replaceAll(regex, replacement) que recebe uma expressão regular e uma outra String. Em todo lugar onde ele encontrar o padrão definido pela expressão regular, ele irá trocar pelo valor do segundo parâmetro! Por exemplo: "Caelum".replaceAll("[Cm]", "*") //*aelu*
+            System.out.println(novaData);
         }
 	}
 
